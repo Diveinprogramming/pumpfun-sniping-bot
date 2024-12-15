@@ -3,8 +3,8 @@ dotenv.config();
 import axios from "axios";
 import {
   Keypair,
-  Connection,
   clusterApiUrl,
+  Connection,
   PublicKey,
   SystemProgram,
   Transaction,
@@ -63,6 +63,8 @@ const MAX_BONDING_CURVE_PROGRESS = parseInt(
 const SELL_BONDING_CURVE_PROGRESS = parseInt(
   process.env.SELL_BONDING_CURVE_PROGRESS || 15
 );
+
+// adjust accordingly
 const PROFIT_TARGET_1 = 1.25; // 25% increase
 const PROFIT_TARGET_2 = 1.25; // Another 25% increase
 const STOP_LOSS_LIMIT = 0.9; // 10% decrease
@@ -149,7 +151,7 @@ const transporter = nodemailer.createTransport({
   secure: false,
   auth: {
     user: "khansaleem789700@gmail.com",
-    pass: "muvatkgrntcesdje",
+    pass: "nwysknsppouvrxqr",
   },
 });
 
@@ -311,6 +313,8 @@ const checkBalance = async () => {
   updateLog(`Current balance: ${balance / 1e9} SOL`);
   return balance / 1e9;
 };
+
+
 //fetch all best pairs token
 const fetchSPLTokens = async () => {
   try {
@@ -334,6 +338,8 @@ const fetchSPLTokens = async () => {
     return [];
   }
 };
+
+
 // sell token after specific profit reached
 const sellTokens = async (mint, sellPercentage) => {
   const tokens = await fetchSPLTokens();
@@ -373,6 +379,8 @@ const sellTokens = async (mint, sellPercentage) => {
     }
   }
 };
+
+
 // countineously monitor trade to hit maxium profit
 const monitorTrade = async (mint, initialMarketCap, initialBondingCurve) => {
   let endTime = Date.now() + SELL_TIMEOUT;
